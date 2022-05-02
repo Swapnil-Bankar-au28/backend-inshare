@@ -15,7 +15,8 @@ const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
 
-const baseURL = "linkshare-23.netlify.app";
+// const baseURL = "linkshare-23.netlify.app";
+const baseURL = "https://innshare.herokuapp.com"
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 
