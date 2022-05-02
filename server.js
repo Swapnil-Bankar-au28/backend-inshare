@@ -1,10 +1,15 @@
 require('dotenv').config();
 const express = require('express');
+const ejs = require('ejs');
+
+
+
 const app = express();
+// const upload = require('express-fileupload');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static('/public'));
+app.use(express.static('public'));
 app.use(express.json());
 
 
@@ -13,7 +18,11 @@ app.use(express.json());
 
 const initMongoDB = require('./config/db');
 initMongoDB();
-// template enjine 
+
+app.get('/', (req, res) => {
+        res.sendFile(__dirname + '/index.html')
+    })
+    // template enjine 
 
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine ', 'ejs')
