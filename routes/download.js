@@ -7,7 +7,8 @@ router.get('/:uuid', async(req, res) => {
     if (!file) {
         return res.render('download', { error: 'link has benn expire' })
     }
-    const filePath = `${__dirname}/../${file.path}`;
+    // const filePath = `${__dirname}/../${file.path}`;
+    const filePath = `./../${file.path}`;
 
     res.download(filePath);
 

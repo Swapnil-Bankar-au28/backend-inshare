@@ -14,9 +14,10 @@ const fileURL = document.querySelector("#fileURL");
 const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
+const baseURL = 'http://localhost:3000'
+    // const baseURL = "https://thriving-peony-5deca6.netlify.app";
+    // const baseURL = "https://link-33.herokuapp.com/"
 
-// const baseURL = "https://thriving-peony-5deca6.netlify.app";
-const baseURL = "https://link-33.herokuapp.com/"
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 
@@ -119,6 +120,7 @@ const uploadFile = () => {
 };
 
 const onFileUploadSuccess = (res) => {
+    // var data = JSON.stringify(res)
     fileInput.value = ""; // reset the input
     status.innerText = "Uploaded";
 
@@ -127,10 +129,30 @@ const onFileUploadSuccess = (res) => {
     emailForm[2].innerText = "Send";
     progressContainer.style.display = "none"; // hide the box
 
+
     const { file: url } = JSON.parse(res);
     console.log(url);
     sharingContainer.style.display = "block";
     fileURL.value = url;
+
+
+
+
+
+
+
+    // fileInput.value = ""; // reset the input
+    // status.innerText = "Uploaded";
+
+    // // remove the disabled attribute from form btn & make text send
+    // emailForm[2].removeAttribute("disabled");
+    // emailForm[2].innerText = "Send";
+    // progressContainer.style.display = "none"; // hide the box
+
+    // const { file: url } = JSON.parse(res);
+    // console.log(url);
+    // sharingContainer.style.display = "block";
+    // fileURL.value = url;
 };
 
 emailForm.addEventListener("submit", (e) => {

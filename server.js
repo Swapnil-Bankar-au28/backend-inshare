@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 app.use(express.json());
 
+app.set('view engine', 'ejs')
 
-
-
+var file
 
 const initMongoDB = require('./config/db');
 initMongoDB();
@@ -23,6 +23,11 @@ initMongoDB();
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
+
+app.get('/download', (req, res) => {
+    res.render('download')
+})
+
 
 const corsOptions = {
     origin: process.env.ALLOWED_CLIENT.split(',')
